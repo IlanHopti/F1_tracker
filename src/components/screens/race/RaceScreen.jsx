@@ -4,9 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
 import RaceCard from './RaceCard';
 
-export default function RaceScreen() {
+export default function RaceScreen(props) {
 
     const [sessions, setSessions] = useState([]);
+    
+    const { navigation } = props;
 
     useEffect(() => {
         getSessions();
@@ -16,7 +18,6 @@ export default function RaceScreen() {
         try {
             const res = await axios.get("https://api.openf1.org/v1/sessions");
             setSessions(res.data);
-            console.log(res.data)
         } catch (error) {
             console.error('ERROR', error);
         }
@@ -25,12 +26,12 @@ export default function RaceScreen() {
     return (
         <SafeAreaView style={styles.screen}>
             <View>
-                <Text>Liste des sessions :</Text>
+                <Text style={styles.subtitle}>Liste des sessions :</Text>
                 <FlatList
                     data={sessions}
                     keyExtractor={(item, id) => id.toString()}
                     renderItem={({ item }) => (
-                        <RaceCard {...item}/>
+                        <RaceCard session={item} navigation={navigation}/>
                     )}
                 />
             </View>
@@ -52,6 +53,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
+    },
+    subtitle: {
+        fontSize: 18,
+        color: '#888',
     },
 
 });

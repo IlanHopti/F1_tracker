@@ -1,15 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function RaceCard(session) {
+export default function RaceCard({session, navigation}) {
+
+    const navigateToRace = () => {
+        navigation.push('RaceDetail', {session});
+    }
+
     return (
-        <View style={styles.card}>
+        <TouchableOpacity onPress={navigateToRace} style={styles.card}>
             <Text style={styles.title}>{session.session_name}</Text>
             <Text style={styles.subtitle}>{session.location}, {session.country_name}</Text>
             <Text>Date: {session.date_start}</Text>
             <Text>Heure de début: {session.date_start}</Text>
             <Text>Heure de fin: {session.date_end}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
