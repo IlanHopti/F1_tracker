@@ -10,9 +10,11 @@ import {
   TextInput,
   View,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
+import {userExists} from '../../../helpers/AuthHelper';
+import Toast from 'react-native-toast-message';
 export default function LoginScreen() {
   const navigation = useNavigation();
 
@@ -20,7 +22,21 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [inputValid, setInputValid] = useState(false);
   const handleChangeScreen = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Register');
+  };
+
+  const handleCheckUser = async () => {
+    const isUser = await userExists(username, password);
+    if (isUser) {
+      navigation.navigate('Home');
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: 'Utilisateur inconnu',
+        topOffset: 100,
+        visibilityTime: 2000,
+      });
+    }
   };
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -28,7 +44,7 @@ export default function LoginScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{flex: 1}}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Inscription</Text>
+          <Text style={styles.headerText}>Se connecter</Text>
           <Image
             source={{
               uri: 'https://static-00.iconduck.com/assets.00/profile-circle-icon-512x512-zxne30hp.png',
@@ -52,13 +68,29 @@ export default function LoginScreen() {
             secureTextEntry={true}
           />
 
-          <Button
-            title={'Envoyer'}
-            onPress={() => {
-              // checkPassword();
-              handleChangeScreen();
-            }}
-          />
+          <View
+            style={{
+              // flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // backgroundColor: 'red',
+              flex: 1,
+              width: '100%',
+            }}>
+            <TouchableOpacity
+              style={styles.confirmButton}
+              onPress={() => {
+                handleCheckUser();
+              }}>
+              <Text>Confirmer</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                handleChangeScreen();
+              }}>
+              <Text>Register</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -92,5 +124,10 @@ const styles = StyleSheet.create({
   },
   notValid: {
     borderColor: 'red',
+  },
+  confirmButton: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: 'lightblue',
   },
 });

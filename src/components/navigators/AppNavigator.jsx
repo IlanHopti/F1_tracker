@@ -9,7 +9,7 @@ import TabNavigator from './TabNavigator';
 
 export default function AppNavigator() {
   return (
-    <Stack.Navigator initialRouteName={'Login'}>
+    <Stack.Navigator initialRouteName={'Register'}>
       <Stack.Screen
         options={{headerShown: false, gestureEnabled: false}}
         name="Home"
@@ -18,11 +18,11 @@ export default function AppNavigator() {
       <Stack.Screen
         name="Login"
         component={LoginScreen}
-        options={{headerShown: false}}
+        // options={{headerShown: false}}
       />
       <Stack.Screen
         name="Register"
-        options={{headerShown: false}}
+        // options={{headerShown: false}}
         component={RegisterScreen}
       />
     </Stack.Navigator>
