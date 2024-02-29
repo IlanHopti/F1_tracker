@@ -1,19 +1,29 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const TeamItem = ({team}) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    // Rediriger vers une autre page avec les informations de l'équipe
+    navigation.navigate('TeamDetails', {team});
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={styles.infoContainer}>
-        <Text style={styles.name}>{team.name}</Text>
-        <Text style={styles.country}>{`${team.base}`}</Text>
-        <Text
-          style={
-            styles.details
-          }>{`${team.pole_positions}  /  ${team.world_championships}`}</Text>
+    <TouchableOpacity onPress={handlePress}>
+      <View style={styles.container}>
+        <View style={styles.infoContainer}>
+          <Text style={styles.name}>{team.name}</Text>
+          <Text style={styles.country}>{`${team.base}`}</Text>
+          <Text
+            style={
+              styles.details
+            }>{`PP ${team.pole_positions}  /  WC ${team.world_championships}`}</Text>
+        </View>
+        <Image source={{uri: team.logo}} style={styles.logo} />
       </View>
-      <Image source={{uri: team.logo}} style={styles.logo} />
-    </View>
+    </TouchableOpacity>
   );
 };
 

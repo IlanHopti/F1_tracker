@@ -11,6 +11,12 @@ const TeamScreen = () => {
     first_team_entry: 1997,
     world_championships: 4,
     pole_positions: 73,
+    engine: 'Red Bull Powertrains',
+    firstTeamEntry: 1997,
+    highest_race_finish: {
+      position: 1,
+      number: 75,
+    },
   };
 
   // Tableau de données contenant 10 équipes
