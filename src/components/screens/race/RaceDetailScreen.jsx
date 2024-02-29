@@ -17,8 +17,7 @@ export default function RaceDetailScreen({ route }) {
     const getDrivers = async () => {
         try {
             const res = await axios.get("https://api.openf1.org/v1/position?meeting_key=" + session.meeting_key);
-            const classment = res.data.slice(0, 19);
-            console.log('CLASSEMENT', classment);
+            const classment = res.data.slice(0, 20);
             setDrivers(classment);
         } catch (error) {
             console.error('ERROR', error);
@@ -47,7 +46,7 @@ export default function RaceDetailScreen({ route }) {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#fff',
+        backgroundColor: '#191919',
         borderRadius: 10,
         padding: 15,
         marginVertical: 10,

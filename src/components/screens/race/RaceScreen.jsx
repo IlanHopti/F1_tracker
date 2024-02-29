@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Text, View, StyleSheet, FlatList, TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
@@ -17,24 +17,24 @@ export default function RaceScreen(props) {
 
     const getSessions = async () => {
         try {
-            const res = await axios.get("https://api.openf1.org/v1/sessions");
+            const res = await axios.get("https://api.openf1.org/v1/sessions?session_name=Race");
             setSessions(res.data);
         } catch (error) {
             console.error('ERROR', error);
         }
     }
 
-    const filterSessions = sessions.filter(sessions => 
-        sessions.session_name.toLowerCase().includes(searchSessions.toLowerCase())
-    )
+    const filterSessions = useMemo(() => sessions.filter(sessions =>(
+        sessions.location.toLowerCase().includes(searchSessions.toLowerCase())
+    )),[sessions, searchSessions]);
 
     return (
         <SafeAreaView style={styles.screen}>
             <View>
-                <Text style={styles.subtitle}>Liste des sessions :</Text>
+                <Text>Liste des sessions :</Text>
                 <TextInput 
                     style={styles.searchBar}
-                    placeholder='Rechercher une course'
+                    placeholder='Rechercher une location de course...'
                     onChangeText={setSearchSessions}
                     value={searchSessions}
                 />
@@ -52,22 +52,8 @@ export default function RaceScreen(props) {
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
-        justifyContent: 'center',   
-        alignItems: 'center',
-        backgroundColor: 'white',
-    },
-    center: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-    },
-    subtitle: {
-        fontSize: 18,
-        color: '#888',
+        flex: 1,   
+        padding: 10,
     },
     searchBar: {
         height: 40,
@@ -75,7 +61,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         paddingHorizontal: 10,
-        marginBottom: 10,
     },
 
 });
