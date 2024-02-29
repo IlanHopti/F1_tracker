@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-
 import Geolocation from '@react-native-community/geolocation';
-
+import GeolocHelper from '../../../helpers/GeolocHelper';
+import NearRaceCard from './GeolocCard';
 import {
   Text,
   PermissionsAndroid,
@@ -10,10 +10,14 @@ import {
   View,
   StyleSheet,
   Platform,
+  FlatList,
 } from 'react-native';
 
 export default function GeolocScreen() {
-  const Permission = async () => {
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [data, setData] = useState();
+
+  const Permission = useCallback(async () => {
     if (Platform.OS === 'ios') {
       getCurrentLocation();
     } else {
@@ -38,21 +42,29 @@ export default function GeolocScreen() {
         console.warn(err);
       }
     }
-  };
+  }, [getCurrentLocation]);
 
-  const [currentLocation, setCurrentLocation] = useState(null);
+  useEffect(() => {
+    Permission();
+  }, [Permission]);
 
-  const getCurrentLocation = () => {
+  const getCurrentLocation = useCallback(() => {
     Geolocation.getCurrentPosition(
       position => {
         const {latitude, longitude} = position.coords;
         setCurrentLocation({latitude, longitude});
-        console.log(latitude, longitude);
+        loadData(latitude, longitude);
       },
       error => alert('Error', error.message),
       {enableHighAccuracy: true, timeout: 15000, maximumAge: 1000},
     );
-  };
+  }, [loadData]);
+
+  const loadData = useCallback(async (latitude, longitude) => {
+    GeolocHelper.GetGeoloc(latitude, longitude).then(res => {
+      setData(res.postalCodes);
+    });
+  }, []);
 
   return (
     <SafeAreaProvider>
@@ -62,13 +74,18 @@ export default function GeolocScreen() {
           Latitude: {currentLocation ? currentLocation.latitude : 'Loading...'}
         </Text>
         <Text>
-          Longitude:
+          Longitude:{' '}
           {currentLocation ? currentLocation.longitude : 'Loading...'}
         </Text>
       </View>
-      <TouchableOpacity style onPress={Permission}>
+      <TouchableOpacity onPress={Permission}>
         <Text>Location</Text>
       </TouchableOpacity>
+      <FlatList
+        data={data}
+        keyExtractor={(item, id) => id.toString()}
+        renderItem={({item}) => <NearRaceCard session={item} />}
+      />
     </SafeAreaProvider>
   );
 }
