@@ -17,7 +17,9 @@ export default function RaceDetailScreen({ route }) {
     const getDrivers = async () => {
         try {
             const res = await axios.get("https://api.openf1.org/v1/position?meeting_key=" + session.meeting_key);
-            setDrivers(res.data);
+            const classment = res.data.slice(0, 19);
+            console.log('CLASSEMENT', classment);
+            setDrivers(classment);
         } catch (error) {
             console.error('ERROR', error);
         }
@@ -39,7 +41,6 @@ export default function RaceDetailScreen({ route }) {
                 >
                 </FlatList>
             </View>
-
         </SafeAreaView>
     )
 }
