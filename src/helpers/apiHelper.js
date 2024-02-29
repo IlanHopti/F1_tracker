@@ -32,3 +32,22 @@ export class GeolocHelper {
     }
   }
 }
+
+export class FormulaHelper {
+  static async GetRaces() {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: 'https://v1.formula-1.api-sports.io/circuits',
+        headers: {
+          'x-rapidapi-host': x - rapidapi - host,
+          'x-rapidapi-key': x - rapidapi - key,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+}
