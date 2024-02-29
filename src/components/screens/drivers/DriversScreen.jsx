@@ -3,23 +3,23 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Text, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {actions as driversActions} from '../../../redux/reducer/driversReducer';
-import axios from 'axios';
+import apiHelper from '../../../helpers/apiHelper';
 
 export default function DriversScreen(factory, deps) {
   const {drivers} = useSelector(state => state.drivers);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (drivers.length > 0) {
+    if (drivers?.length > 0) {
       console.log('Drivers already set');
       return;
     }
-    axios
-      .get('https://api.openf1.org/v1/drivers?session_key=latest')
-      .then(response => {
-        console.log('setting drivers');
-        dispatch(driversActions.setDrivers(response.data));
-      });
+
+    apiHelper.getDrivers().then(response => {
+      console.log('setting drivers');
+      console.log(response);
+      dispatch(driversActions.setDrivers(response));
+    });
   }, [dispatch, drivers]);
 
   const handlePress = useCallback(() => {
