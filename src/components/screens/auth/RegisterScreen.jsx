@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {getData, storeData, checkUser} from '../../../helpers/AuthHelper';
+import {getData, storeData, checkUser} from '../../../helpers/authHelper';
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
