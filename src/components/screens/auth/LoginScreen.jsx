@@ -38,6 +38,11 @@ export default function LoginScreen() {
       });
     }
   };
+
+  const handleChangeScreenToRace = () => {
+    navigation.push('Race');
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <KeyboardAvoidingView
