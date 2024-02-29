@@ -1,42 +1,43 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export default function RaceCard({session, navigation}) {
+  const navigateToRace = () => {
+    navigation.push('RaceDetail', {session});
+  };
 
-    const navigateToRace = () => {
-        navigation.push('RaceDetail', {session});
-    }
-
-    return (
-        <TouchableOpacity onPress={navigateToRace} style={styles.card}>
-            <Text style={styles.title}>{session.session_name}</Text>
-            <Text style={styles.subtitle}>{session.location}, {session.country_name}</Text>
-            <Text>Date: {session.date_start}</Text>
-            <Text>Heure de début: {session.date_start}</Text>
-            <Text>Heure de fin: {session.date_end}</Text>
-        </TouchableOpacity>
-    )
+  return (
+    <TouchableOpacity onPress={navigateToRace} style={styles.card}>
+      <Text style={styles.title}>{session.session_name}</Text>
+      <Text style={styles.subtitle}>
+        {session.location}, {session.country_name}
+      </Text>
+      <Text>Date: {session.date_start}</Text>
+      <Text>Heure de début: {session.date_start}</Text>
+      <Text>Heure de fin: {session.date_end}</Text>
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({
-    card: {
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        padding: 15,
-        marginVertical: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 5,
-    },
-    subtitle: {
-        color: '#888',
-        marginBottom: 5,
-    },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 15,
+    marginVertical: 10,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  subtitle: {
+    color: '#888',
+    marginBottom: 5,
+  },
 });
