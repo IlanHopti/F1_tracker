@@ -7,6 +7,8 @@ const Tab = createBottomTabNavigator();
 
 import DriversScreen from '../screens/drivers/DriversScreen';
 
+import GeolocScreen from '../screens/geoloc/GeolocScreen';
+
 export default function TabNavigator() {
   return (
     <Tab.Navigator
@@ -18,6 +20,7 @@ export default function TabNavigator() {
       }>
       <Tab.Screen name="Drivers" component={DriversScreen} />
       <Tab.Screen name="Drivers2" component={DriversScreen} />
+      <Tab.Screen name="Drivers3" component={GeolocScreen} />
     </Tab.Navigator>
   );
 }
