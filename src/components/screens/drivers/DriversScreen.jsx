@@ -3,7 +3,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Text, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {actions as driversActions} from '../../../redux/reducer/driversReducer';
-import apiHelper from '../../../helpers/apiHelper';
+import {DriversHelper} from '../../../helpers/apiHelper';
 
 export default function DriversScreen(factory, deps) {
   const {drivers} = useSelector(state => state.drivers);
@@ -15,7 +15,7 @@ export default function DriversScreen(factory, deps) {
       return;
     }
 
-    apiHelper.getDrivers().then(response => {
+    DriversHelper.getDrivers().then(response => {
       console.log('setting drivers');
       console.log(response);
       dispatch(driversActions.setDrivers(response));

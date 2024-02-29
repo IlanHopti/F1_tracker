@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class DriversHelper {
+export class DriversHelper {
   static async getDrivers() {
     try {
       return await axios
@@ -17,4 +17,18 @@ class DriversHelper {
   }
 }
 
-export default DriversHelper;
+export class GeolocHelper {
+  static async GetGeoloc(latitude, longitude) {
+    try {
+      const res = await axios({
+        method: 'get',
+        url: `http://api.geonames.org/findNearbyPostalCodesJSON?lat=${latitude}&lng=${longitude}&username=chikendeath`,
+      });
+
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+}

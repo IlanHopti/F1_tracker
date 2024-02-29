@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Geolocation from '@react-native-community/geolocation';
-import GeolocHelper from '../../../helpers/GeolocHelper';
+import {GeolocHelper} from '../../../helpers/apiHelper';
 import NearRaceCard from './GeolocCard';
 import {
   Text,
