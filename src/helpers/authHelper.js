@@ -40,7 +40,7 @@ const userExists = async (username, password) => {
   }
 
   if (user.username === username && user.password === password) {
-    console.log('user existsdssdds');
+    console.log('user exists');
     return true;
   }
 };
