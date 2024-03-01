@@ -62,3 +62,25 @@ export class DriversHelper {
     }
   }
 }
+
+export class TeamsHelper {
+  static async getTeams() {
+    try {
+      return await axios
+        .get('https://v1.formula-1.api-sports.io/teams', {
+          headers: {
+            'x-rapidapi-host': process.env.API_HOST,
+            'x-rapidapi-key': process.env.API_KEY,
+          },
+        })
+        .then(response => {
+          console.log('setting teams api');
+          console.log('api response', process.env.API_KEY);
+          return response.data.response;
+        });
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+}

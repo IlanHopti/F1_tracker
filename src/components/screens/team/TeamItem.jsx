@@ -6,7 +6,6 @@ const TeamItem = ({team}) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    // Rediriger vers une autre page avec les informations de l'équipe
     navigation.navigate('TeamDetails', {team});
   };
 
@@ -15,11 +14,10 @@ const TeamItem = ({team}) => {
       <View style={styles.container}>
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{team.name}</Text>
-          <Text style={styles.country}>{`${team.base}`}</Text>
-          <Text
-            style={
-              styles.details
-            }>{`PP ${team.pole_positions}  /  WC ${team.world_championships}`}</Text>
+          <Text style={styles.country}>{team?.base || ''}</Text>
+          <Text style={styles.details}>{`PP ${
+            team?.pole_positions || '0'
+          }  /  WC ${team?.world_championships || '0'}`}</Text>
         </View>
         <Image source={{uri: team.logo}} style={styles.logo} />
       </View>
@@ -33,7 +31,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
     backgroundColor: '#191919',
     borderRadius: 18,
     margin: 6,
@@ -57,7 +54,7 @@ const styles = StyleSheet.create({
   details: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'red',
+    color: 'white',
   },
   country: {
     fontSize: 12,
