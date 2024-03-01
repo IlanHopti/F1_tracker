@@ -1,48 +1,35 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {FlatList, Text, TextInput, View, StyleSheet} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {actions as driversActions} from '../../../redux/reducer/driversReducer';
-import {actions as driversRankingActions} from '../../../redux/reducer/driversRankingReducer';
-import {DriversHelper} from '../../../helpers/apiHelper';
-import DriversItem from './DriversItem';
+import DriversItem from '../drivers/DriversItem';
+import * as asyncStorageHelper from '../../../helpers/asyncStorageHelper';
+import {useFocusEffect} from '@react-navigation/native';
 
-export default function DriversScreen(factory, deps) {
+export default function FavoritesScreen() {
   const [searchQuery, setSearchQuery] = useState('');
-
-  const {drivers} = useSelector(state => state.drivers);
-  const {driversRanking} = useSelector(state => state.driversRanking);
-  const dispatch = useDispatch();
-
   const [driversLoading, setDriversLoading] = useState(false);
+  const [drivers, setDrivers] = useState([]);
+  const [favKeys, setFavKeys] = useState([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      const fetchData = async () => {
+        const fav = await asyncStorageHelper.getKeys();
+        setFavKeys(fav.filter(f => f !== 'user'));
+      };
+      fetchData();
+    }, []),
+  );
+
+  console.log('favKeys', favKeys);
 
   useEffect(() => {
-    if (drivers?.length === 0) {
-      setDriversLoading(true);
-      console.log('Setting drivers');
-      try {
-        DriversHelper.getDrivers().then(response => {
-          // console.log(response);
-          dispatch(driversActions.setDrivers(response));
-          setDriversLoading(false);
-        });
-      } catch (error) {
-        setDriversLoading(false);
-        console.log('error', error);
-      }
-    }
+    asyncStorageHelper.getMultiple(favKeys).then(favDrivers => {
+      setDrivers(favDrivers);
+    });
+  }, [favKeys]);
 
-    if (driversRanking?.length === 0) {
-      try {
-        DriversHelper.getDriversRanking().then(response => {
-          console.log('Setting drivers ranking');
-          dispatch(driversRankingActions.setDriversRanking(response));
-        });
-      } catch (e) {
-        console.log('error', e);
-      }
-    }
-  }, [dispatch, drivers, driversRanking]);
+  console.log('driversdddd', drivers);
 
   const filterDrivers = useMemo(() => {
     // sort by team_name
@@ -109,7 +96,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     paddingLeft: 10,
-    color: 'white',
   },
   addTodoContainer: {
     flex: 1,

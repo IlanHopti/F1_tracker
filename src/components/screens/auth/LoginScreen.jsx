@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {userExists} from '../../../helpers/authHelper';
+import {userExists} from '../../../helpers/asyncStorageHelper';
 import Toast from 'react-native-toast-message';
 export default function LoginScreen() {
   const navigation = useNavigation();

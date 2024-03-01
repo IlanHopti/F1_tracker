@@ -18,7 +18,7 @@ const getData = async key => {
   }
 };
 
-const removeValue = async key => {
+const removeData = async key => {
   try {
     await AsyncStorage.removeItem(key);
   } catch (e) {
@@ -45,4 +45,31 @@ const userExists = async (username, password) => {
   }
 };
 
-export {storeData, getData, removeValue, checkUser, userExists};
+const getKeys = async () => {
+  try {
+    return await AsyncStorage.getAllKeys();
+  } catch (e) {
+    console.log('error', e);
+  }
+};
+
+const getMultiple = async keys => {
+  try {
+    const test = await AsyncStorage.multiGet(keys);
+    return test.map(item => {
+      return JSON.parse(item[1]);
+    });
+  } catch (e) {
+    console.log('error', e);
+  }
+};
+
+export {
+  storeData,
+  getData,
+  removeData,
+  checkUser,
+  userExists,
+  getKeys,
+  getMultiple,
+};

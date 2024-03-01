@@ -13,6 +13,7 @@ const Tab = createBottomTabNavigator();
 import DriversScreen from '../screens/drivers/DriversScreen';
 import RaceScreen from '../screens/race/RaceScreen';
 import TeamScreen from '../screens/team/TeamScreen';
+import FavoritesScreen from '../screens/favorites/FavoritesScreen';
 
 export default function TabNavigator() {
   return (
@@ -57,8 +58,8 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Favories"
-        component={DriversScreen}
+        name="Favoris"
+        component={FavoritesScreen}
         options={{
           tabBarIcon: ({color, size}) => <StarIcon color={color} size={size} />,
         }}
