@@ -42,7 +42,7 @@ export default function RegisterScreen() {
     navigation.navigate('Login');
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.allContainer}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{flex: 1}}>
@@ -77,13 +77,14 @@ export default function RegisterScreen() {
               onPress={() => {
                 handleRegister();
               }}>
-              <Text>Confirmer</Text>
+              <Text>S'inscrire</Text>
             </TouchableOpacity>
             <TouchableOpacity
+              style={styles.confirmButton}
               onPress={() => {
                 handleChangeScreen();
               }}>
-              <Text>login</Text>
+              <Text>Déja un compte ? Se connecter</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -93,6 +94,10 @@ export default function RegisterScreen() {
 }
 
 const styles = StyleSheet.create({
+  allContainer: {
+    flex: 1,
+    backgroundColor: '#191919',
+  },
   header: {
     flex: 2,
     justifyContent: 'center',
@@ -102,6 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '600',
     paddingBottom: 20,
+    color: 'white',
   },
   inputContainer: {
     flex: 3,
@@ -112,7 +118,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'white',
     backgroundColor: 'lightgrey',
     borderRadius: 10,
     width: '90%',
@@ -130,5 +136,6 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     backgroundColor: 'lightblue',
+    borderRadius: 10,
   },
 });

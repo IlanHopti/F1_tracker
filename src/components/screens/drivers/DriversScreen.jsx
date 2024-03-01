@@ -65,6 +65,7 @@ export default function DriversScreen(factory, deps) {
           <View style={styles.searchContainer}>
             <TextInput
               style={styles.searchInput}
+              placeholderTextColor={'white'}
               value={searchQuery}
               onChangeText={setSearchQuery}
               placeholder="Rechercher un pilote"
@@ -88,7 +89,7 @@ export default function DriversScreen(factory, deps) {
 
 const styles = StyleSheet.create({
   screenComponent: {
-    backgroundColor: 'black',
+    backgroundColor: '#191919',
   },
   list: {
     flex: 8,

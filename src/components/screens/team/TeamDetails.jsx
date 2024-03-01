@@ -19,18 +19,20 @@ const TeamDetails = ({route}) => {
         </View>
         <View style={styles.infoTeam}>
           <Text style={styles.textInfoHeader}>Données</Text>
-          <View style={styles.line}>
-            <CalendarIcon size={30} style={{marginRight: 10}} />
-            <View>
-              <Text style={styles.textInfoMedium}>{team?.base}</Text>
-              <Text style={styles.textInfo}>Siège</Text>
+          {team?.base && (
+            <View style={styles.line}>
+              <CalendarIcon size={30} style={{marginRight: 10}} />
+              <View>
+                <Text style={styles.textInfoMedium}>{team?.base}</Text>
+                <Text style={styles.textInfo}>Siège</Text>
+              </View>
             </View>
-          </View>
+          )}
           <View style={styles.line}>
             <TrophyIcon size={30} style={{marginRight: 10}} />
             <View>
               <Text style={styles.textInfoMedium}>
-                {team?.world_championships}
+                {team?.world_championships || '0'}
               </Text>
               <Text style={styles.textInfo}>Championnat du monde</Text>
             </View>
@@ -47,30 +49,36 @@ const TeamDetails = ({route}) => {
           <View style={styles.line}>
             <PresentationChartBarIcon size={30} style={{marginRight: 10}} />
             <View>
-              <Text style={styles.textInfoMedium}>{team.pole_positions}</Text>
+              <Text style={styles.textInfoMedium}>
+                {team.pole_positions || '0'}
+              </Text>
               <Text style={styles.textInfo}>Pole positions</Text>
             </View>
           </View>
 
-          <View style={styles.line}>
-            <CalendarIcon size={30} style={{marginRight: 10}} />
-            <View>
-              <Text style={styles.textInfoMedium}>
-                {team?.first_team_entry}
-              </Text>
-              <Text style={styles.textInfo}>Premier grand prix</Text>
+          {team?.first_team_entry && (
+            <View style={styles.line}>
+              <CalendarIcon size={30} style={{marginRight: 10}} />
+              <View>
+                <Text style={styles.textInfoMedium}>
+                  {team?.first_team_entry}
+                </Text>
+                <Text style={styles.textInfo}>Premier grand prix</Text>
+              </View>
             </View>
-          </View>
+          )}
 
-          <View style={styles.line}>
-            <CalendarIcon size={30} style={{marginRight: 10}} />
-            <View>
-              <Text style={styles.textInfoMedium}>
-                {`${team?.highest_race_finish?.position} x${team?.highest_race_finish?.number}`}
-              </Text>
-              <Text style={styles.textInfo}>Position la plus haute</Text>
+          {team?.highest_race_finish?.position && (
+            <View style={styles.line}>
+              <CalendarIcon size={30} style={{marginRight: 10}} />
+              <View>
+                <Text style={styles.textInfoMedium}>
+                  {`${team?.highest_race_finish?.position} x${team?.highest_race_finish?.number}`}
+                </Text>
+                <Text style={styles.textInfo}>Position la plus haute</Text>
+              </View>
             </View>
-          </View>
+          )}
         </View>
       </View>
     </ScrollView>

@@ -39,6 +39,7 @@ export default function RaceScreen(props) {
         <Text style={styles.title}>Liste des sessions :</Text>
         <TextInput
           style={styles.searchBar}
+          placeholderTextColor={'#fff'}
           placeholder="Rechercher une location de course..."
           onChangeText={setSearchSessions}
           value={searchSessions}

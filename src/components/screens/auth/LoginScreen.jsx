@@ -39,7 +39,7 @@ export default function LoginScreen() {
     }
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.allContainer}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{flex: 1}}>
@@ -82,9 +82,10 @@ export default function LoginScreen() {
               onPress={() => {
                 handleCheckUser();
               }}>
-              <Text>Confirmer</Text>
+              <Text>Se connecter</Text>
             </TouchableOpacity>
             <TouchableOpacity
+              style={styles.confirmButton}
               onPress={() => {
                 handleChangeScreen();
               }}>
@@ -98,6 +99,10 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+  allContainer: {
+    flex: 1,
+    backgroundColor: '#191919',
+  },
   header: {
     flex: 2,
     justifyContent: 'center',
@@ -107,6 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '600',
     paddingBottom: 20,
+    color: 'white',
   },
   inputContainer: {
     flex: 3,
@@ -117,7 +123,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'white',
     backgroundColor: 'lightgrey',
     borderRadius: 10,
     width: '90%',
@@ -129,5 +135,6 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     backgroundColor: 'lightblue',
+    borderRadius: 10,
   },
 });

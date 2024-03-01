@@ -27,11 +27,19 @@ export default function AppNavigator() {
       <Stack.Screen
         name="Login"
         component={LoginScreen}
-        // options={{headerShown: false}}
+        options={{
+          headerStyle: {
+            backgroundColor: '#191919',
+          },
+        }}
       />
       <Stack.Screen
         name="Register"
-        // options={{headerShown: false}}
+        options={{
+          headerStyle: {
+            backgroundColor: '#191919',
+          },
+        }}
         component={RegisterScreen}
       />
       <Stack.Screen

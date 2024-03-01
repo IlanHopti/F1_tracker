@@ -16,7 +16,7 @@ export default function SeasonItem({actualDriver, findDriverRanking}) {
               ...styles.textInfoBig,
               color: `#${actualDriver?.team_colour}`,
             }}>
-            {findDriverRanking?.position}
+            {findDriverRanking?.position || '-'}
           </Text>
           <Text style={styles.textInfo}>Position</Text>
         </View>
@@ -26,7 +26,7 @@ export default function SeasonItem({actualDriver, findDriverRanking}) {
               ...styles.textInfoBig,
               color: `#${actualDriver?.team_colour}`,
             }}>
-            {findDriverRanking?.points}
+            {findDriverRanking?.points || '-'}
           </Text>
           <Text style={styles.textInfo}>Points</Text>
         </View>
