@@ -31,12 +31,13 @@ export default function RaceScreen(props) {
     return (
         <SafeAreaView style={styles.screen}>
             <View>
-                <Text>Liste des sessions :</Text>
+                <Text style={styles.title}>Liste des sessions :</Text>
                 <TextInput 
                     style={styles.searchBar}
                     placeholder='Rechercher une location de course...'
                     onChangeText={setSearchSessions}
                     value={searchSessions}
+
                 />
                 <FlatList
                     data={filterSessions}
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,   
         padding: 10,
+        backgroundColor: '#121212',
     },
     searchBar: {
         height: 40,
@@ -62,5 +64,11 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingHorizontal: 10,
     },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 5,
+        color: '#fff',
+    }
 
 });

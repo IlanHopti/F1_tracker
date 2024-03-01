@@ -25,7 +25,7 @@ export default function RaceDetailScreen({ route }) {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.screen}>
             <View>
                 <Text style={styles.title}>
                     {session.session_name} - {session.location}, {session.country_name}
@@ -45,6 +45,11 @@ export default function RaceDetailScreen({ route }) {
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,   
+        padding: 10,
+        backgroundColor: '#121212',
+    },
     card: {
         backgroundColor: '#191919',
         borderRadius: 10,
@@ -60,6 +65,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 5,
+        color: '#fff',
     },
     subtitle: {
         color: '#888',

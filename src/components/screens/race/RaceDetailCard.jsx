@@ -25,19 +25,19 @@ export default function RaceDetailCard({ data }) {
             {driverDetails && (
                 <React.Fragment>
                     <Text style={styles.subtitle}>Driver Name: {driverDetails.full_name}</Text>
-                    <Text>Country: {driverDetails.country_code}</Text>
-                    <Text>Team: {driverDetails.team_name}</Text>
+                    <Text style={styles.text}>Country: {driverDetails.country_code}</Text>
+                    <Text style={styles.text}>Team: {driverDetails.team_name}</Text>
                     <Image source={{ uri: driverDetails.headshot_url }} style={styles.image} />
                 </React.Fragment>
             )}
-            <Text>Date: {data.date}</Text>
+            <Text style={styles.text}>Date: {data.date}</Text>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#fff',
+        backgroundColor: '#191919',
         borderRadius: 10,
         padding: 15,
         marginVertical: 10,
@@ -46,11 +46,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
+        
     },
     title: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 5,
+        color: '#fff',
     },
     subtitle: {
         color: '#888',
@@ -62,4 +64,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginBottom: 5,
     },
+    text: {
+        color: '#fff',
+    }
 });

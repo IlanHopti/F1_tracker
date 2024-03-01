@@ -11,7 +11,7 @@ export default function RaceCard({session, navigation}) {
     }
 
     useEffect(() => {
-        getCircuit();
+        // getCircuit();
     }, []);
 
     const getCircuit = async () => {
@@ -33,13 +33,13 @@ export default function RaceCard({session, navigation}) {
     return (
         <TouchableOpacity onPress={navigateToRace} style={styles.card}>
             <Text style={styles.title}>{session.location}, {session.country_name}</Text>
-            <View style={styles.info}>
+            {/* <View style={styles.info}>
                 <Text style={styles.text} >Distance de course: {circuit.race_distance}</Text>
                 <Image 
                     source={{ uri: circuit.image }}
                     style={styles.image}
                 />
-            </View>
+            </View> */}
             <Text style={styles.text} >Date: {session.date_start}</Text>
             <Text style={styles.text} >Heure de début: {session.date_start}</Text>
             <Text style={styles.text} >Heure de fin: {session.date_end}</Text>
@@ -66,9 +66,7 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     subtitle: {
-        color: '#888',
         marginBottom: 5,
-        color: '#fff',
     },
     info: {
         marginTop: 10,
