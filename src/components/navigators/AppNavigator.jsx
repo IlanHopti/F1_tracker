@@ -44,13 +44,17 @@ export default function AppNavigator() {
         }}
         component={DriversDetailsScreen}
       />
-      <Stack.Screen name="RaceDetail" component={RaceDetailScreen} options={{
-        headerStyle: {
-          backgroundColor: '#191919',
-        },
-        headerTitleStyle: {color: 'white'},
-        headerTitle: '',
-      }} />
+      <Stack.Screen
+        name="RaceDetail"
+        component={RaceDetailScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: '#191919',
+          },
+          headerTitleStyle: {color: 'white'},
+          headerTitle: '',
+        }}
+      />
     </Stack.Navigator>
   );
 }

@@ -11,6 +11,7 @@ import {
 const Tab = createBottomTabNavigator();
 
 import DriversScreen from '../screens/drivers/DriversScreen';
+import RaceScreen from '../screens/race/RaceScreen';
 
 export default function TabNavigator() {
   return (
@@ -37,7 +38,7 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name="Circuit"
-        component={DriversScreen}
+        component={RaceScreen}
         options={{
           tabBarIcon: ({color, size}) => (
             <GlobeAltIcon color={color} size={size} />
