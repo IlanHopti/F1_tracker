@@ -7,6 +7,7 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import TabNavigator from './TabNavigator';
 import DriversDetailsScreen from '../screens/drivers/DriversDetailsScreen';
+import RaceDetailScreen from '../screens/race/RaceDetailScreen';
 
 export default function AppNavigator() {
   return (
@@ -43,6 +44,13 @@ export default function AppNavigator() {
         }}
         component={DriversDetailsScreen}
       />
+      <Stack.Screen name="RaceDetail" component={RaceDetailScreen} options={{
+        headerStyle: {
+          backgroundColor: '#191919',
+        },
+        headerTitleStyle: {color: 'white'},
+        headerTitle: '',
+      }} />
     </Stack.Navigator>
   );
 }
