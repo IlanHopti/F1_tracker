@@ -31,6 +31,7 @@ export default function AppNavigator() {
           headerStyle: {
             backgroundColor: '#191919',
           },
+          headerTintColor: 'white',
         }}
       />
       <Stack.Screen
@@ -39,6 +40,8 @@ export default function AppNavigator() {
           headerStyle: {
             backgroundColor: '#191919',
           },
+          headerTintColor: 'white',
+          headerBackTitle: 'Se connecter',
         }}
         component={RegisterScreen}
       />
@@ -50,6 +53,8 @@ export default function AppNavigator() {
           },
           headerTitleStyle: {color: 'white'},
           headerTitle: '',
+          headerTintColor: 'white',
+          headerBackTitle: 'Pilotes',
         }}
         component={DriversDetailsScreen}
       />
@@ -62,6 +67,8 @@ export default function AppNavigator() {
           },
           headerTitleStyle: {color: 'white'},
           headerTitle: '',
+          headerTintColor: 'white',
+          headerBackTitle: 'Circuits',
         }}
       />
       <Stack.Screen
@@ -73,6 +80,8 @@ export default function AppNavigator() {
           },
           headerTitleStyle: {color: 'white'},
           headerTitle: '',
+          headerTintColor: 'white',
+          headerBackTitle: 'Équipes',
         }}
       />
     </Stack.Navigator>

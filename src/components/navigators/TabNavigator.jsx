@@ -30,7 +30,7 @@ export default function TabNavigator() {
         name="Drivers"
         component={DriversScreen}
         options={{
-          tabBarLabel: 'Drivers',
+          tabBarLabel: 'Pilotes',
           tabBarStyle: {backgroundColor: 'black'},
           tabBarIcon: ({color, size}) => (
             <UserGroupIcon color={color} size={size} />
@@ -41,6 +41,7 @@ export default function TabNavigator() {
         name="Circuit"
         component={RaceScreen}
         options={{
+          tabBarLabel: 'Circuits',
           tabBarIcon: ({color, size}) => (
             <GlobeAltIcon color={color} size={size} />
           ),

@@ -14,10 +14,11 @@ export default function DriversScreen(factory, deps) {
   const {driversRanking} = useSelector(state => state.driversRanking);
   const dispatch = useDispatch();
 
-  const [driversLoading, setDriversLoading] = useState(true);
+  const [driversLoading, setDriversLoading] = useState(false);
 
   useEffect(() => {
     if (drivers?.length === 0) {
+      setDriversLoading(true);
       console.log('Setting drivers');
       try {
         DriversHelper.getDrivers().then(response => {
