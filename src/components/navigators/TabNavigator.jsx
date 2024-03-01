@@ -1,8 +1,13 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// import {createMaterialBottomTabNavigator} from 'react-native-paper/react-navigation';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {
+  UserGroupIcon,
+  GlobeAltIcon,
+  StarIcon,
+  HomeModernIcon,
+  InformationCircleIcon,
+  MapIcon,
+} from 'react-native-heroicons/solid';
 const Tab = createBottomTabNavigator();
 
 import DriversScreen from '../screens/drivers/DriversScreen';
@@ -11,33 +16,64 @@ export default function TabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName={'Drivers'}
-      screenOptions={
-        {
-          // tabBarActiveTintColor: '#e91e63',
-          // tabBarStyle: {backgroundColor: 'lightgrey'},
-        }
-      }>
+      screenOptions={{
+        // tabBarActiveTintColor: '#e91e63',
+        headerTitleStyle: {color: 'white'},
+        tabBarStyle: {backgroundColor: 'black'},
+        headerStyle: {
+          backgroundColor: '#191919',
+        },
+      }}>
       <Tab.Screen
         name="Drivers"
         component={DriversScreen}
         options={{
-          tabBarLabel: 'Drivers',
+          tabBarLabel: 'Driverssdsd',
+          tabBarStyle: {backgroundColor: 'black'},
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons
-              name="access-point-minus"
-              color={color}
-              size={size}
-            />
+            <UserGroupIcon color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="Drivers2"
+        name="Circuit"
         component={DriversScreen}
         options={{
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <GlobeAltIcon color={color} size={size} />
           ),
+        }}
+      />
+      <Tab.Screen
+        name="Equipes"
+        component={DriversScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <HomeModernIcon color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favories"
+        component={DriversScreen}
+        options={{
+          tabBarIcon: ({color, size}) => <StarIcon color={color} size={size} />,
+        }}
+      />
+      <Tab.Screen
+        name="Infos"
+        component={DriversScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <InformationCircleIcon color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Map"
+        component={DriversScreen}
+        options={{
+          tabBarIcon: ({color, size}) => <MapIcon color={color} size={size} />,
         }}
       />
     </Tab.Navigator>
