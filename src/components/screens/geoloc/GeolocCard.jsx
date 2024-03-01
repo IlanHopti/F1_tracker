@@ -25,11 +25,13 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     marginHorizontal: 10,
+    alignItems: 'center',
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: 'black',
   },
   subtitle: {
     fontSize: 12,
