@@ -14,6 +14,7 @@ import DriversScreen from '../screens/drivers/DriversScreen';
 import RaceScreen from '../screens/race/RaceScreen';
 import TeamScreen from '../screens/team/TeamScreen';
 import FavoritesScreen from '../screens/favorites/FavoritesScreen';
+import GeolocScreen from '../screens/geoloc/GeolocScreen';
 
 export default function TabNavigator() {
   return (
@@ -75,7 +76,7 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name="Map"
-        component={DriversScreen}
+        component={GeolocScreen}
         options={{
           tabBarIcon: ({color, size}) => <MapIcon color={color} size={size} />,
         }}
