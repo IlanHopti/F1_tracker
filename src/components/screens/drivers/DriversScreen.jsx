@@ -34,7 +34,7 @@ export default function DriversScreen(factory, deps) {
     if (driversRanking?.length === 0) {
       try {
         DriversHelper.getDriversRanking().then(response => {
-          console.log('Setting drivers ranking');
+          // console.log('Setting drivers ranking');
           dispatch(driversRankingActions.setDriversRanking(response));
         });
       } catch (e) {

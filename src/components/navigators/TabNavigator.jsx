@@ -12,6 +12,7 @@ const Tab = createBottomTabNavigator();
 
 import DriversScreen from '../screens/drivers/DriversScreen';
 import RaceScreen from '../screens/race/RaceScreen';
+import ReadMeScreen from '../screens/readme/ReadMeScreen';
 
 export default function TabNavigator() {
   return (
@@ -63,7 +64,7 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name="Infos"
-        component={DriversScreen}
+        component={ReadMeScreen}
         options={{
           tabBarIcon: ({color, size}) => (
             <InformationCircleIcon color={color} size={size} />
