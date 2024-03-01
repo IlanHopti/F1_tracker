@@ -12,6 +12,7 @@ const Tab = createBottomTabNavigator();
 
 import DriversScreen from '../screens/drivers/DriversScreen';
 import RaceScreen from '../screens/race/RaceScreen';
+import TeamScreen from '../screens/team/TeamScreen';
 
 export default function TabNavigator() {
   return (
@@ -29,7 +30,7 @@ export default function TabNavigator() {
         name="Drivers"
         component={DriversScreen}
         options={{
-          tabBarLabel: 'Driverssdsd',
+          tabBarLabel: 'Drivers',
           tabBarStyle: {backgroundColor: 'black'},
           tabBarIcon: ({color, size}) => (
             <UserGroupIcon color={color} size={size} />
@@ -47,7 +48,7 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name="Equipes"
-        component={DriversScreen}
+        component={TeamScreen}
         options={{
           tabBarIcon: ({color, size}) => (
             <HomeModernIcon color={color} size={size} />
