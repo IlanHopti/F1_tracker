@@ -17,7 +17,6 @@ export default function DriversScreen(factory, deps) {
 
     DriversHelper.getDrivers().then(response => {
       console.log('setting drivers');
-      console.log(response);
       dispatch(driversActions.setDrivers(response));
     });
   }, [dispatch, drivers]);

@@ -6,14 +6,11 @@ export default function NearRaceCard({session}) {
     navigation.push('RaceDetail', {session});
   };*/
 
-  console.log('geoloc de session item in the list');
-  console.log(session);
-
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>{session.adminName1}</Text>
+      <Text style={styles.title}>{session.country}</Text>
       <Text style={styles.subtitle}>
-        {session.lat}, {session.lng}
+        {session.lat}, {session.dist}
       </Text>
     </View>
   );
