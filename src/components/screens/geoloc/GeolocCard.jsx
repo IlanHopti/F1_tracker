@@ -1,17 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, Image, View} from 'react-native';
 
 export default function NearRaceCard({session}) {
-  /* const navigateToRace = () => {
-    navigation.push('RaceDetail', {session});
-  };*/
-
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>{session.country}</Text>
+      <Text style={styles.title}>{session.name}</Text>
       <Text style={styles.subtitle}>
-        {session.lat}, {session.dist}
+        {session.city}, {session.country}
       </Text>
+      <Image source={{uri: session?.image}} style={styles.logo} />
     </View>
   );
 }
@@ -27,6 +24,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    marginHorizontal: 10,
   },
   title: {
     fontSize: 18,
@@ -34,7 +32,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   subtitle: {
-    color: '#888',
+    fontSize: 12,
+    color: 'black',
     marginBottom: 5,
+  },
+  logo: {
+    width: 130,
+    height: 80,
+    padding: 10,
+    margin: 10,
   },
 });

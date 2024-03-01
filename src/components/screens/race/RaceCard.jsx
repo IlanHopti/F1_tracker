@@ -40,7 +40,7 @@ export default function RaceCard({session, navigation}) {
       </Text>
       {/* <View style={styles.info}>
                 <Text style={styles.text} >Distance de course: {circuit.race_distance}</Text>
-                <Image
+                <Image 
                     source={{ uri: circuit.image }}
                     style={styles.image}
                 />

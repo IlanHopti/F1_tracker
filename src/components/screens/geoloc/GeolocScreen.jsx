@@ -94,6 +94,9 @@ export default function GeolocScreen() {
               myCountry.lat - resLoc.postalCodes[0].lat,
               myCountry.long - resLoc.postalCodes[0].lng,
             ],
+            image: element.image,
+            name: element.name,
+            city: element.competition.location.city,
           };
           setDistanceBetweenRace([...distanceBetweenSecond, distBetween]);
         }
@@ -116,13 +119,12 @@ export default function GeolocScreen() {
   };
 
   return (
-    <SafeAreaProvider>
-      <Text>Geolocalisation Screen</Text>
+    <SafeAreaProvider style={styles.screenComponent}>
       <View>
-        <Text>
+        <Text style={styles.text}>
           Latitude: {currentLocation ? currentLocation.latitude : 'Loading...'}
         </Text>
-        <Text>
+        <Text style={styles.text}>
           Longitude:{' '}
           {currentLocation ? currentLocation.longitude : 'Loading...'}
         </Text>
@@ -135,3 +137,54 @@ export default function GeolocScreen() {
     </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  screenComponent: {
+    backgroundColor: '#191919',
+  },
+  list: {
+    flex: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchInput: {
+    width: '80%',
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingLeft: 10,
+    color: 'white',
+  },
+  addTodoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+    flexDirection: 'row',
+    marginHorizontal: 10,
+  },
+  listItem: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: 'lightgrey',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    flex: 1,
+  },
+  loading: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  text: {
+    fontSize: 18,
+    color: 'white',
+  },
+});
