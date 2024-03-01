@@ -15,6 +15,7 @@ import RaceScreen from '../screens/race/RaceScreen';
 import TeamScreen from '../screens/team/TeamScreen';
 import FavoritesScreen from '../screens/favorites/FavoritesScreen';
 import GeolocScreen from '../screens/geoloc/GeolocScreen';
+import ReadMeScreen from '../screens/readme/ReadMeScreen';
 
 export default function TabNavigator() {
   return (
@@ -67,7 +68,7 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name="Infos"
-        component={DriversScreen}
+        component={ReadMeScreen}
         options={{
           tabBarIcon: ({color, size}) => (
             <InformationCircleIcon color={color} size={size} />
